@@ -1,0 +1,69 @@
+[System]
+Name='BioreactorSugeno'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=25
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtaver'
+
+[Input1]
+Name='error'
+Range=[-1 1]
+NumMFs=5
+MF1='muy_neg':'trapmf',[-1 -1 -0.666666666666667 -0.333333333333333]
+MF2='neg':'trimf',[-0.666666666666667 -0.333333333333333 0]
+MF3='cero':'trimf',[-0.333333333333333 0 0.333333333333333]
+MF4='pos':'trimf',[0 0.333333333333333 0.666666666666667]
+MF5='muy_pos':'trapmf',[0.333333333333333 0.666666666666667 1 1]
+
+[Input2]
+Name='derivada_error'
+Range=[-1 1]
+NumMFs=5
+MF1='muy_neg':'trapmf',[-1 -1 -0.666666666666667 -0.333333333333333]
+MF2='neg':'trimf',[-0.666666666666667 -0.333333333333333 0]
+MF3='cero':'trimf',[-0.333333333333333 0 0.333333333333333]
+MF4='pos':'trimf',[0 0.333333333333333 0.666666666666667]
+MF5='muy_pos':'trapmf',[0.333333333333333 0.666666666666667 1 1]
+
+[Output1]
+Name='accion'
+Range=[-1 1]
+NumMFs=5
+MF1='accion_muy_pequeña':'constant',[-0.666666666666667]
+MF2='accion_pequeña':'constant',[-0.333333333333333]
+MF3='accion_constante':'constant',[0]
+MF4='accion_grande':'constant',[0.333333333333333]
+MF5='accion_muy_grande':'constant',[0.666666666666667]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 1 (1) : 1
+1 3, 1 (1) : 1
+1 4, 2 (1) : 1
+1 5, 3 (1) : 1
+2 1, 1 (1) : 1
+2 2, 2 (1) : 1
+2 3, 2 (1) : 1
+2 4, 2 (1) : 1
+2 5, 2 (1) : 1
+3 1, 4 (1) : 1
+3 2, 3 (1) : 1
+3 3, 3 (1) : 1
+3 4, 3 (1) : 1
+3 5, 2 (1) : 1
+4 1, 4 (1) : 1
+4 2, 4 (1) : 1
+4 3, 4 (1) : 1
+4 4, 4 (1) : 1
+4 5, 5 (1) : 1
+5 1, 3 (1) : 1
+5 2, 4 (1) : 1
+5 3, 5 (1) : 1
+5 4, 5 (1) : 1
+5 5, 5 (1) : 1
